@@ -8,6 +8,6 @@ class Dashboard extends BaseController
     {
         $data['title'] = "Dashboard | Pasa-Buy";
 
-        return view('dashboard', $data);
+        return view('dashboard_page', $data);
     }
 }
