@@ -7,7 +7,7 @@
     </div>
 
     <div class="nav-center">
-        <a href="#" class="nav-link active">Home</a>
+        <a href="<?= base_url('/') ?>" class="nav-link active">Home</a>
         <a href="#" class="nav-link">How It Works</a>
         <a href="#" class="nav-link">Features</a>
         <a href="#" class="nav-link">Community Shops</a>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="nav-right">
-        <a href="#" class="nav-login">Login</a>
-        <a href="#" class="nav-signup">Sign Up</a>
+        <a href="<?= base_url('login') ?>" class="nav-login">Login</a>
+        <a href="<?= base_url('register') ?>" class="nav-signup">Sign Up</a>
     </div>
 </nav>
