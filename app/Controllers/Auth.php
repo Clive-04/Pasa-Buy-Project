@@ -21,12 +21,12 @@ class Auth extends BaseController
     public function loginProcess()
     {
         // temporary only
-        return redirect()->to('/dashboard_page');
+        return redirect()->to('/dashboard');
     }
 
     public function logout()
     {
         // temporary only
-        return redirect()->to('/login_page');
+        return redirect()->to('/login');
     }
 }
