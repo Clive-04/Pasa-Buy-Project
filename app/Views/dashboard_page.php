@@ -12,9 +12,9 @@
 
             <nav class="dashboard-menu">
                 <a href="<?= base_url('dashboard') ?>" class="dashboard-link active">Dashboard</a>
-                <a href="#" class="dashboard-link">Post Request</a>
-                <a href="#" class="dashboard-link">Browse Requests</a>
-                <a href="#" class="dashboard-link">My Requests</a>
+                <a href="<?= base_url('post-request') ?>" class="dashboard-link">Post a Request</a>
+                <a href="<?= base_url('browse-requests') ?>" class="dashboard-link">Browse Requests</a>
+                <a href="<?= base_url('my-requests') ?>" class="dashboard-link">My Requests</a>
                 <a href="#" class="dashboard-link">Messages</a>
                 <a href="#" class="dashboard-link">Payments</a>
                 <a href="#" class="dashboard-link">Profile</a>
@@ -33,8 +33,8 @@
                 </div>
 
                 <div class="dashboard-hero-actions">
-                    <a href="#" class="dashboard-btn primary-btn">Post a Request</a>
-                    <a href="#" class="dashboard-btn secondary-btn">Browse Requests</a>
+                    <a href="<?= base_url('post-request') ?>" class="dashboard-btn primary-btn">Post a Request</a>
+                    <a href="<?= base_url('browse-requests') ?>" class="dashboard-btn secondary-btn">Browse Requests</a>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                 <div class="dashboard-card">
                     <div class="card-header">
                         <h3>My Active Requests</h3>
-                        <a href="#">View All</a>
+                        <a href="<?= base_url('my-requests') ?>">View All</a>
                     </div>
 
                     <div class="request-list">
@@ -77,7 +77,7 @@
                                 <h4>Paracetamol 500mg</h4>
                                 <p>Mercury Drug • Urgent</p>
                             </div>
-                            <span class="status-badge pending">Pending</span>
+                            <a href="<?= base_url('request-details/1') ?>" class="status-badge pending">Pending</a>
                         </div>
 
                         <div class="request-item">
@@ -85,7 +85,7 @@
                                 <h4>1 Ream Bond Paper</h4>
                                 <p>National Bookstore • Accepted</p>
                             </div>
-                            <span class="status-badge accepted">Accepted</span>
+                            <a href="<?= base_url('request-details/2') ?>" class="status-badge accepted">Accepted</a>
                         </div>
 
                         <div class="request-item">
@@ -93,7 +93,7 @@
                                 <h4>Bottled Water Pack</h4>
                                 <p>Local Grocery • On the Way</p>
                             </div>
-                            <span class="status-badge delivery">On the Way</span>
+                            <a href="<?= base_url('request-details/3') ?>" class="status-badge delivery">On the Way</a>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                 <div class="dashboard-card">
                     <div class="card-header">
                         <h3>Nearby Requests</h3>
-                        <a href="#">Browse</a>
+                        <a href="<?= base_url('browse-requests') ?>">Browse</a>
                     </div>
 
                     <div class="request-list">
@@ -110,7 +110,7 @@
                                 <h4>Notebook and Ballpen</h4>
                                 <p>0.8 km away • Fee: ₱25</p>
                             </div>
-                            <a href="#" class="mini-btn">Accept</a>
+                            <a href="<?= base_url('request-details/1') ?>" class="mini-btn">Accept</a>
                         </div>
 
                         <div class="request-item">
@@ -118,7 +118,7 @@
                                 <h4>Baby Milk Formula</h4>
                                 <p>1.1 km away • Fee: ₱40</p>
                             </div>
-                            <a href="#" class="mini-btn">Accept</a>
+                            <a href="<?= base_url('request-details/2') ?>" class="mini-btn">Accept</a>
                         </div>
 
                         <div class="request-item">
@@ -126,7 +126,7 @@
                                 <h4>Snack Pack</h4>
                                 <p>0.5 km away • Fee: ₱20</p>
                             </div>
-                            <a href="#" class="mini-btn">Accept</a>
+                            <a href="<?= base_url('request-details/3') ?>" class="mini-btn">Accept</a>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                 <div class="dashboard-card wide-card">
                     <div class="card-header">
                         <h3>Recent Activity</h3>
-                        <a href="#">See More</a>
+                        <a href="<?= base_url('my-requests') ?>">See More</a>
                     </div>
 
                     <div class="activity-timeline">
@@ -170,24 +170,24 @@
                     </div>
 
                     <div class="quick-actions">
-                        <a href="#" class="quick-action-card">
+                        <a href="<?= base_url('post-request') ?>" class="quick-action-card">
                             <span>📝</span>
                             <p>Post New Request</p>
                         </a>
 
-                        <a href="#" class="quick-action-card">
+                        <a href="<?= base_url('browse-requests') ?>" class="quick-action-card">
                             <span>📍</span>
                             <p>Find Nearby Runners</p>
                         </a>
 
-                        <a href="#" class="quick-action-card">
-                            <span>💬</span>
-                            <p>Open Messages</p>
+                        <a href="<?= base_url('my-requests') ?>" class="quick-action-card">
+                            <span>📦</span>
+                            <p>Track My Requests</p>
                         </a>
 
-                        <a href="#" class="quick-action-card">
-                            <span>💳</span>
-                            <p>Check Payments</p>
+                        <a href="<?= base_url('request-details/1') ?>" class="quick-action-card">
+                            <span>📄</span>
+                            <p>View Request Details</p>
                         </a>
                     </div>
                 </div>
