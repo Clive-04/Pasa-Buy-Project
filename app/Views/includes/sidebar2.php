@@ -10,9 +10,10 @@
         <a href="<?= base_url('post-request') ?>" class="dashboard-link">Post a Request</a>
         <a href="<?= base_url('browse-requests') ?>" class="dashboard-link">Browse Requests</a>
         <a href="<?= base_url('my-requests') ?>" class="dashboard-link">My Requests</a>
-        <a href="#" class="dashboard-link">Messages</a>
-        <a href="#" class="dashboard-link">Payments</a>
-        <a href="#" class="dashboard-link">Profile</a>
+        <a href="<?= base_url('messages') ?>" class="dashboard-link">Messages</a>
+        <a href="<?= base_url('notifications') ?>" class="dashboard-link">Notifications</a>
+        <a href="#" class="dashboard-link disabled-link">Payments</a>
+        <a href="#" class="dashboard-link disabled-link">Profile</a>
         <a href="<?= base_url('logout') ?>" class="dashboard-link logout-link">Logout</a>
     </nav>
 </aside>
