@@ -1,38 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title) ?></title>
-    <link rel="stylesheet" href="<?= base_url('public/css/landing.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('public/css/auth.css') ?>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<nav class="navbar">
-    <div class="nav-left">
-        <a href="<?= base_url('/') ?>" class="logo">
-            <span class="logo-icon">🛍️</span>
-            <span class="logo-text">Pasa-Buy</span>
-        </a>
-    </div>
-
-    <div class="nav-center">
-        <a href="<?= base_url('/') ?>" class="nav-link">Home</a>
-        <a href="#" class="nav-link">How It Works</a>
-        <a href="#" class="nav-link">Features</a>
-        <a href="#" class="nav-link">Community Shops</a>
-        <a href="#" class="nav-link">Contact</a>
-    </div>
-
-    <div class="nav-right">
-        <a href="<?= base_url('login') ?>" class="nav-login">Login</a>
-        <a href="<?= base_url('register') ?>" class="nav-signup">Sign Up</a>
-    </div>
-</nav>
+<?= $this->include('includes/header') ?>
+<?= $this->include('includes/navbar') ?>
 
 <main class="auth-page">
     <section class="auth-section">
@@ -147,5 +114,4 @@
     </section>
 </main>
 
-</body>
-</html>
+<?= $this->include('includes/footer') ?>
