@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?= base_url('public/css/dashboard.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/css/post-request.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/css/request.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('public/css/messages.css') ?>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
