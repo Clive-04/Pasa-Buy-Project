@@ -19,3 +19,6 @@ $routes->get('/browse-requests', 'Request::browse');
 $routes->get('/request-details', 'Request::details');
 $routes->get('/request-details/(:num)', 'Request::details/$1');
 $routes->get('/my-requests', 'Request::myRequests');
+
+$routes->get('/messages', 'Message::index');
+$routes->get('/notifications', 'Notification::index');
