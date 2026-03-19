@@ -60,15 +60,9 @@
 
                         <button type="submit" class="auth-btn primary-btn">Login</button>
 
-                        <div class="auth-divider">
-                            <span>or</span>
-                        </div>
-
-                        <a href="#" class="auth-btn secondary-btn">Continue with Google</a>
-
                         <p class="auth-footer-text">
                             Don’t have an account?
-                            <a href="register.php">Register here</a>
+                            <a href="<?= base_url('register') ?>">Register here</a>
                         </p>
                     </form>
                 </div>
