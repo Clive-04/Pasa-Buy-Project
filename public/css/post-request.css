@@ -1,7 +1,16 @@
 .post-request-page {
-    min-height: calc(100vh - 160px);
-    padding: 30px 20px 40px;
-    background: linear-gradient(180deg, #f8fbff 0%, #eef6f7 100%);
+    min-height: auto;
+    padding: 0;
+    background: transparent;
+}
+
+.post-request-content-panel {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dfe7ee;
+    border-radius: 36px;
+    padding: 36px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
 }
 
 .post-request-container {
@@ -46,20 +55,27 @@
     color: #0f172a;
     border: 1px solid #dbe3ea;
     font-weight: 600;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.page-back-btn:hover {
+    background: #f8fafc;
 }
 
 .post-request-grid {
     display: grid;
     grid-template-columns: 1fr 340px;
     gap: 22px;
+    align-items: start;
 }
 
 .post-request-form-card,
 .request-summary-card {
-    background: #ffffff;
+    background: #fcfdff;
     border: 1px solid #e5e7eb;
     border-radius: 28px;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
 }
 
 .post-request-form-card {
@@ -83,7 +99,7 @@
     border: 1px solid #edf2f7;
     border-radius: 22px;
     padding: 22px;
-    background: #fcfdff;
+    background: #f8fafc;
 }
 
 .form-section h2 {
@@ -162,6 +178,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
+    transition: 0.2s ease;
 }
 
 .form-btn.primary-btn {
@@ -169,10 +186,19 @@
     color: #ffffff;
 }
 
+.form-btn.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(20, 184, 166, 0.18);
+}
+
 .form-btn.secondary-btn {
     background: #f8fafc;
     color: #0f172a;
     border: 1px solid #dbe3ea;
+}
+
+.form-btn.secondary-btn:hover {
+    background: #eef2f7;
 }
 
 .request-summary-card h2 {
@@ -230,6 +256,10 @@
     .request-summary-card {
         position: static;
     }
+
+    .post-request-content-panel {
+        padding: 26px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -243,11 +273,21 @@
     }
 
     .post-request-form-card,
-    .request-summary-card {
+    .request-summary-card,
+    .post-request-content-panel {
         padding: 20px;
     }
 
     .form-section {
         padding: 18px;
+    }
+
+    .post-request-content-panel {
+        border-radius: 24px;
+    }
+
+    .page-back-btn {
+        width: 100%;
+        justify-content: center;
     }
 }
