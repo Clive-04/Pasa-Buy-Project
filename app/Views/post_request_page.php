@@ -19,7 +19,7 @@
 
                 <div class="post-request-grid">
                     <section class="post-request-form-card">
-                        <form action="#" method="POST" class="post-request-form">
+                        <form action="<?= base_url('request/process') ?>" method="POST" class="post-request-form">
                             <div class="form-section">
                                 <h2>Item Details</h2>
 

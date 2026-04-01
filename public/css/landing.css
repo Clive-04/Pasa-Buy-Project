@@ -95,6 +95,12 @@ body {
     opacity: 0.92;
 }
 
+.nav-welcome {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 0.96rem;
+}
+
 /* PAGE LAYOUT */
 .page-wrapper {
     display: flex;

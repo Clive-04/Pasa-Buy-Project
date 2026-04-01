@@ -7,6 +7,17 @@
 
         <section class="dashboard-main">
             <div class="request-content-panel">
+                <?php if (session()->getFlashdata('success')): ?>
+                    <div class="alert alert-success" style="padding: 12px; background: #d1fae5; color: #065f46; border-radius: 8px; margin-bottom: 20px;">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (session()->getFlashdata('error')): ?>
+                    <div class="alert alert-error" style="padding: 12px; background: #fee2e2; color: #b91c1c; border-radius: 8px; margin-bottom: 20px;">
+                        <?= session()->getFlashdata('error') ?>
+                    </div>
+                <?php endif; ?>
+
                 <div class="page-top">
                     <div>
                         <span class="page-badge">Request History</span>
@@ -26,41 +37,26 @@
                 </div>
 
                 <div class="my-request-list">
-                    <div class="my-request-card">
-                        <div class="my-request-main">
-                            <h3>Paracetamol 500mg</h3>
-                            <p>Mercury Drug • Posted 10 mins ago</p>
+                    <?php if (!empty($requests)): ?>
+                        <?php foreach ($requests as $request): ?>
+                            <div class="my-request-card">
+                                <div class="my-request-main">
+                                    <h3><?= esc($request['item_name']) ?> (<?= $request['quantity'] ?>)</h3>
+                                    <p><?= esc($request['store_name']) ?> • Posted <?= date('M j, Y g:i A', strtotime($request['created_at'])) ?></p>
+                                </div>
+                                <div class="my-request-meta">
+                                    <span class="request-tag <?= $request['urgency'] ?>"><?= ucfirst($request['urgency']) ?></span>
+                                    <span class="status-pill <?= $request['status'] ?>"><?= ucfirst(str_replace('_', ' ', $request['status'])) ?></span>
+                                    <a href="<?= base_url('request-details/' . $request['id']) ?>" class="btn-light">View</a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="no-requests">
+                            <p>You haven't posted any requests yet.</p>
+                            <a href="<?= base_url('post-request') ?>" class="btn-primary">Post Your First Request</a>
                         </div>
-                        <div class="my-request-meta">
-                            <span class="request-tag urgent">Urgent</span>
-                            <span class="status-pill pending">Pending</span>
-                            <a href="<?= base_url('request-details/1') ?>" class="btn-light">View</a>
-                        </div>
-                    </div>
-
-                    <div class="my-request-card">
-                        <div class="my-request-main">
-                            <h3>1 Ream Bond Paper</h3>
-                            <p>National Bookstore • Posted 1 hour ago</p>
-                        </div>
-                        <div class="my-request-meta">
-                            <span class="request-tag normal">Normal</span>
-                            <span class="status-pill accepted">Accepted</span>
-                            <a href="<?= base_url('request-details/2') ?>" class="btn-light">View</a>
-                        </div>
-                    </div>
-
-                    <div class="my-request-card">
-                        <div class="my-request-main">
-                            <h3>Bottled Water Pack</h3>
-                            <p>Nearby Grocery • Posted 2 hours ago</p>
-                        </div>
-                        <div class="my-request-meta">
-                            <span class="request-tag asap">ASAP</span>
-                            <span class="status-pill delivery">On the Way</span>
-                            <a href="<?= base_url('request-details/3') ?>" class="btn-light">View</a>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>

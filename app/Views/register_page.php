@@ -24,11 +24,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="username" placeholder="Choose a username" required>
-                        </div>
-
-                        <div class="form-group">
                             <label for="email">Email Address</label>
                             <input type="email" id="email" name="email" placeholder="Enter your email" required>
                         </div>
@@ -51,21 +46,6 @@
                         <div class="form-group full-width">
                             <label for="address">Address / Barangay</label>
                             <input type="text" id="address" name="address" placeholder="Enter your address or barangay" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="user_type">User Type</label>
-                            <select id="user_type" name="user_type" required>
-                                <option value="">Select user type</option>
-                                <option value="requester">Requester</option>
-                                <option value="runner">Runner</option>
-                                <option value="both">Both</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="valid_id">Upload Valid ID</label>
-                            <input type="file" id="valid_id" name="valid_id">
                         </div>
                     </div>
 

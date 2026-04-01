@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
+$routes->post('/register/process', 'Auth::process');
 
 $routes->post('/login/process', 'Auth::loginProcess');
 $routes->get('/logout', 'Auth::logout');
@@ -15,6 +16,8 @@ $routes->get('/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index');
 
 $routes->get('/post-request', 'Request::create');
+$routes->post('/request/process', 'Request::process');
+$routes->post('/request/accept/(:num)', 'Request::accept/$1');
 $routes->get('/browse-requests', 'Request::browse');
 $routes->get('/request-details', 'Request::details');
 $routes->get('/request-details/(:num)', 'Request::details/$1');

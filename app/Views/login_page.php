@@ -36,6 +36,12 @@
                     <div class="auth-header">
                         <h2>Sign In</h2>
                         <p>Enter your account details to continue.</p>
+                        <?php if (session()->getFlashdata('success')): ?>
+                            <p style="color: green;"><?= session()->getFlashdata('success') ?></p>
+                        <?php endif; ?>
+                        <?php if (session()->getFlashdata('error')): ?>
+                            <p style="color: red;"><?= session()->getFlashdata('error') ?></p>
+                        <?php endif; ?>
                     </div>
 
                     <form action="<?= base_url('login/process') ?>" method="POST" class="auth-form">

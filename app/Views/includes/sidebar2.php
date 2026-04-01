@@ -1,7 +1,17 @@
 <aside class="dashboard-sidebar">
+    <?php
+    if (session()->has('user_id')) {
+        $user_name = session('user_name');
+        $first_name = explode(' ', $user_name)[0] ?? 'User';
+        $avatar = strtoupper(substr($first_name, 0, 1));
+    } else {
+        $first_name = 'Guest';
+        $avatar = 'G';
+    }
+    ?>
     <div class="dashboard-profile-card">
-        <div class="profile-avatar">C</div>
-        <h3>Clive Benito</h3>
+        <div class="profile-avatar"><?php echo $avatar; ?></div>
+        <h3><?php echo $first_name; ?></h3>
         <p>Community User</p>
     </div>
 
