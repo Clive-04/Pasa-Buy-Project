@@ -29,11 +29,20 @@
                 </div>
 
                 <div class="request-tabs">
-                    <button class="tab-btn active">All</button>
-                    <button class="tab-btn">Pending</button>
-                    <button class="tab-btn">Accepted</button>
-                    <button class="tab-btn">On the Way</button>
-                    <button class="tab-btn">Delivered</button>
+                    <a href="<?= base_url('my-requests') ?>" 
+                    class="tab-btn <?= empty($currentStatus) ? 'active' : '' ?>">All</a>
+
+                    <a href="<?= base_url('my-requests?status=pending') ?>" 
+                    class="tab-btn <?= ($currentStatus === 'pending') ? 'active' : '' ?>">Pending</a>
+
+                    <a href="<?= base_url('my-requests?status=accepted') ?>" 
+                    class="tab-btn <?= ($currentStatus === 'accepted') ? 'active' : '' ?>">Accepted</a>
+
+                    <a href="<?= base_url('my-requests?status=on_the_way') ?>" 
+                    class="tab-btn <?= ($currentStatus === 'on_the_way') ? 'active' : '' ?>">On the Way</a>
+
+                    <a href="<?= base_url('my-requests?status=delivered') ?>" 
+                    class="tab-btn <?= ($currentStatus === 'delivered') ? 'active' : '' ?>">Delivered</a>
                 </div>
 
                 <div class="my-request-list">
@@ -52,10 +61,19 @@
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <div class="no-requests">
-                            <p>You haven't posted any requests yet.</p>
-                            <a href="<?= base_url('post-request') ?>" class="btn-primary">Post Your First Request</a>
-                        </div>
+                        <?php if (empty($currentStatus) || $currentStatus === 'all'): ?>
+                            <!-- ✅ ONLY for "All" -->
+                            <div class="no-requests">
+                                <p>You haven't posted any requests yet.</p>
+                                <a href="<?= base_url('post-request') ?>" class="btn-primary">Post Your First Request</a>
+                            </div>
+                        <?php else: ?>
+                            <!-- ✅ For filtered tabs -->
+                            <div class="no-requests">
+                                <p>No <?= ucfirst(str_replace('_', ' ', $currentStatus)) ?> requests found.</p>
+                            </div>
+                        <?php endif; ?>
+
                     <?php endif; ?>
                 </div>
             </div>

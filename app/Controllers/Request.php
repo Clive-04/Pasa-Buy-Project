@@ -61,20 +61,56 @@ class Request extends BaseController
         }
     }
 
-    public function browse()
-    {
-        if (!session()->has('user_id')) {
-            return redirect()->to('/login')->with('error', 'Please login to browse requests.');
-        }
-
-        $requestModel = new RequestModel();
-        $requests = $requestModel->where('status', 'pending')->where('user_id !=', session('user_id'))->findAll();
-
-        $data['title'] = 'Browse Requests | Pasa-Buy';
-        $data['requests'] = $requests;
-
-        return view('browse_requests_page', $data);
+   public function browse()
+{
+    if (!session()->has('user_id')) {
+        return redirect()->to('/login')->with('error', 'Please login to browse requests.');
     }
+
+    $requestModel = new RequestModel();
+
+    // Base query
+    $query = $requestModel
+        ->where('status', 'pending')
+        ->where('user_id !=', session('user_id'));
+
+    // 👇 Get filters from URL
+    $search   = $this->request->getGet('search');
+    $category = $this->request->getGet('category');
+    $urgency  = $this->request->getGet('urgency');
+    $sort     = $this->request->getGet('sort');
+
+    // 🔍 Search (item or store)
+    if (!empty($search)) {
+        $query->groupStart()
+              ->like('item_name', $search)
+              ->orLike('store_name', $search)
+              ->groupEnd();
+    }
+
+    // 📦 Category filter
+    if (!empty($category)) {
+        $query->where('category', $category);
+    }
+
+    // ⚡ Urgency filter
+    if (!empty($urgency)) {
+        $query->where('urgency', $urgency);
+    }
+
+    // 🔽 Sorting
+    if ($sort === 'highest_fee') {
+        $query->orderBy('service_fee', 'DESC');
+    } else {
+        // default = latest
+        $query->orderBy('created_at', 'DESC');
+    }
+
+    $data['requests'] = $query->findAll();
+    $data['title'] = 'Browse Requests | Pasa-Buy';
+
+    return view('browse_requests_page', $data);
+}
 
     public function accept($id)
     {
@@ -137,20 +173,32 @@ class Request extends BaseController
     }
 
     public function myRequests()
-    {
-        if (!session()->has('user_id')) {
-            return redirect()->to('/login')->with('error', 'Please login first.');
-        }
-
-        $requestModel = new RequestModel();
-        $userId = session('user_id');
-
-        // Get user's requests ordered by newest first
-        $data['requests'] = $requestModel->where('user_id', $userId)
-            ->orderBy('created_at', 'DESC')
-            ->findAll();
-
-        $data['title'] = 'My Requests | Pasa-Buy';
-        return view('my_requests_page', $data);
+{
+    if (!session()->has('user_id')) {
+        return redirect()->to('/login')->with('error', 'Please login first.');
     }
+
+    $requestModel = new RequestModel();
+    $userId = session('user_id');
+
+    // 👇 Get status from URL (e.g. ?status=pending)
+    $status = $this->request->getGet('status');
+
+    $query = $requestModel->where('user_id', $userId);
+
+    // 👇 Apply filter if selected
+    if (!empty($status) && $status !== 'all') {
+        $query->where('status', $status);
+    }
+
+    $data['requests'] = $query
+        ->orderBy('created_at', 'DESC')
+        ->findAll();
+
+    $data['title'] = 'My Requests | Pasa-Buy';
+    $data['currentStatus'] = $status; // 👈 pass to view
+
+    return view('my_requests_page', $data);
+}
+    
 }

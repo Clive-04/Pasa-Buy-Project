@@ -17,27 +17,39 @@
                     <a href="<?= base_url('dashboard') ?>" class="page-back-btn">Back to Dashboard</a>
                 </div>
 
-                <div class="filter-bar">
-                    <input type="text" placeholder="Search item or store">
-                    <select>
-                        <option>All Categories</option>
-                        <option>Food</option>
-                        <option>Medicine</option>
-                        <option>School Supplies</option>
-                        <option>Household</option>
+               <form method="get" action="<?= base_url('browse-requests') ?>" class="filter-bar" id="filterForm">
+                    <input type="text" name="search" placeholder="Search item or store"
+                        value="<?= esc($_GET['search'] ?? '') ?>"
+                        onkeyup="debounceSubmit()">
+
+                    <select name="category" onchange="this.form.submit()">
+                        <option value="">All Categories</option>
+                        <option value="food" <?= (($_GET['category'] ?? '') === 'food') ? 'selected' : '' ?>>Food</option>
+                        <option value="medicine" <?= (($_GET['category'] ?? '') === 'medicine') ? 'selected' : '' ?>>Medicine</option>
+                        <option value="school_supplies" <?= (($_GET['category'] ?? '') === 'school_supplies') ? 'selected' : '' ?>>
+                            School Supplies
+                        </option>
+                        <option value="household" <?= (($_GET['category'] ?? '') === 'household') ? 'selected' : '' ?>>Household</option>
+                        <option value="personal_care" <?= (($_GET['category'] ?? '') === 'personal_care') ? 'selected' : '' ?>>
+                            Personal Care
+                        </option>
+                        <option value="other" <?= (($_GET['category'] ?? '') === 'other') ? 'selected' : '' ?>>
+                            Other
+                        </option>
                     </select>
-                    <select>
-                        <option>All Urgency</option>
-                        <option>Normal</option>
-                        <option>Urgent</option>
-                        <option>ASAP</option>
+
+                    <select name="urgency" onchange="this.form.submit()">
+                        <option value="">All Urgency</option>
+                        <option value="normal" <?= (($_GET['urgency'] ?? '') === 'normal') ? 'selected' : '' ?>>Normal</option>
+                        <option value="urgent" <?= (($_GET['urgency'] ?? '') === 'urgent') ? 'selected' : '' ?>>Urgent</option>
+                        <option value="asap" <?= (($_GET['urgency'] ?? '') === 'asap') ? 'selected' : '' ?>>ASAP</option>
                     </select>
-                    <select>
-                        <option>Sort by Latest</option>
-                        <option>Nearest</option>
-                        <option>Highest Fee</option>
+
+                    <select name="sort" onchange="this.form.submit()">
+                        <option value="latest">Sort by Latest</option>
+                        <option value="highest_fee" <?= (($_GET['sort'] ?? '') === 'highest_fee') ? 'selected' : '' ?>>Highest Fee</option>
                     </select>
-                </div>
+            </form>
 
                 <div class="request-card-grid">
                     <?php if (!empty($requests)): ?>

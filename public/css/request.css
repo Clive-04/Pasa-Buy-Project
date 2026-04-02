@@ -4,6 +4,10 @@
     background: transparent;
 }
 
+.tab-btn {
+    text-decoration: none;
+}
+
 .request-content-panel {
     width: 100%;
     min-height: calc(100vh - 190px);
