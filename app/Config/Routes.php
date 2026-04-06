@@ -24,4 +24,11 @@ $routes->get('/request-details/(:num)', 'Request::details/$1');
 $routes->get('/my-requests', 'Request::myRequests');
 
 $routes->get('/messages', 'Message::index');
-$routes->get('/notifications', 'Notification::index');
+
+$routes->get('/about', 'Navbar::about');
+$routes->get('/contact', 'Navbar::contact');
+
+$routes->get('/profile', 'Profile::index');
+$routes->post('profile/update', 'Profile::updateProfile');
+$routes->post('profile/rate-website', 'Profile::rateWebsite');
+$routes->post('profile/refer-friend', 'Profile::referFriend');

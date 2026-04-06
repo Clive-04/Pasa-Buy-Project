@@ -33,7 +33,7 @@
                             <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group full-width">
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password" placeholder="Create a password" required>
                         </div>
@@ -48,11 +48,6 @@
                             <input type="text" id="address" name="address" placeholder="Enter your address or barangay" required>
                         </div>
                     </div>
-
-                    <label class="checkbox-group terms-check">
-                        <input type="checkbox" name="terms" required>
-                        <span>I agree to the Terms and Conditions and Privacy Policy.</span>
-                    </label>
 
                     <button type="submit" class="auth-btn primary-btn">Create Account</button>
 
@@ -80,7 +75,7 @@
                             <p>Request items from nearby stores in a clear and organized way.</p>
                         </div>
                         <div class="visual-feature-card">
-                            <h3>Become a Runner</h3>
+                            <h3>Accept Requests</h3>
                             <p>Accept nearby requests and earn from helping others.</p>
                         </div>
                         <div class="visual-feature-card">

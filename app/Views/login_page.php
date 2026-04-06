@@ -10,7 +10,7 @@
                     <span class="visual-badge">Welcome Back</span>
                     <h1>Login to Pasa-Buy</h1>
                     <p>
-                        Access your requests, track deliveries, message runners,
+                        Access your requests, track deliveries, contact users,
                         and manage your local errands in one place.
                     </p>
 
@@ -20,7 +20,7 @@
                             <p>See live updates from accepted to delivered.</p>
                         </div>
                         <div class="visual-feature-card">
-                            <h3>Message Runners</h3>
+                            <h3>Message Other Users</h3>
                             <p>Stay connected for faster coordination.</p>
                         </div>
                         <div class="visual-feature-card">
@@ -53,15 +53,6 @@
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                        </div>
-
-                        <div class="form-row form-row-between">
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="remember_me">
-                                <span>Remember me</span>
-                            </label>
-
-                            <a href="#" class="text-link">Forgot password?</a>
                         </div>
 
                         <button type="submit" class="auth-btn primary-btn">Login</button>

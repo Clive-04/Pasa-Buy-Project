@@ -6,8 +6,8 @@ class Home extends BaseController
 {
     public function index()
     {
-        $data['title'] = "Pasa-Buy";
+        $data['title'] = "Login | Pasa-Buy";
 
-        return view('landing_page', $data);
+        return view('login_page', $data);
     }
 }

@@ -2,30 +2,7 @@
     <div class="footer-content">
         <div class="footer-brand">
             <h3>Pasa-Buy</h3>
-            <p>Community-based website for faster and easier local errands.</p>
-        </div>
-
-        <div class="footer-links">
-            <div>
-                <h4>Platform</h4>
-                <a href="#">Home</a>
-                <a href="#">Features</a>
-                <a href="#">How It Works</a>
-            </div>
-
-            <div>
-                <h4>Account</h4>
-                <a href="#">Login</a>
-                <a href="#">Register</a>
-                <a href="#">Dashboard</a>
-            </div>
-
-            <div>
-                <h4>Support</h4>
-                <a href="#">Help Center</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-            </div>
+            <p>Pasa-Buy is a community-based platform designed to make local errands faster, easier, and more convenient by connecting people within the same area.</p>
         </div>
     </div>
 
