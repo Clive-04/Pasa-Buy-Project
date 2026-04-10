@@ -2,24 +2,49 @@
 <?= $this->include('includes/navbar') ?>
 
 <main class="page-section">
-    <div class="page-container">
-        <h1>About Pasa-Buy</h1>
+    <div class="about-wrapper">
+        <section class="about-intro">
+            <h1>About Pasa-Buy</h1>
+            <p>
+                Pasa-Buy is a community-based platform that helps people request or deliver nearby items quickly and conveniently.
+            </p>
+            <p>
+                It supports local communities by making errands easier and creating opportunities for people to help one another.
+            </p>
+        </section>
 
-        <p>
-            Pasa-Buy is a community-based platform designed to make local errands faster,
-            easier, and more convenient. It connects people within the same area who need help
-            purchasing items with those willing to assist.
-        </p>
+        <section class="team-section">
+            <h2>Meet the Team</h2>
 
-        <p>
-            Our goal is to support local communities by enabling quick access to nearby stores,
-            promoting collaboration, and creating opportunities for individuals to earn by helping others.
-        </p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="<?= base_url('public/img/team/reniedo.png') ?>" alt="Bea Nicole Reniedo">
+                    </div>
+                    <h3>Bea Nicole Reniedo</h3>
+                    <span class="team-role">Project Lead</span>
+                    <p>Oversees the system design and keeps the platform efficient and organized.</p>
+                </div>
 
-        <p>
-            Whether you need something urgently or want to help someone nearby,
-            Pasa-Buy makes the process simple and efficient.
-        </p>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="<?= base_url('public/img/team/luce.jpg') ?>" alt="Alexa May Cy Luce">
+                    </div>
+                    <h3>Alexa May "Cy" Luce</h3>
+                    <span class="team-role">Market & Operations Strategist</span>
+                    <p>Handles market planning and helps ensure the platform meets community needs.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="<?= base_url('public/img/team/sales.jpg') ?>" alt="Marjhelly P. Sales">
+                    </div>
+                    <h3>Marjhelly P. Sales</h3>
+                    <span class="team-role">User Experience & Design Specialist</span>
+                    <p>Designs a simple and user-friendly interface for a smooth experience.</p>
+                </div>
+            </div>
+        </section>
     </div>
 </main>
 

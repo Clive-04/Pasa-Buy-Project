@@ -36,11 +36,17 @@
                     <div class="auth-header">
                         <h2>Sign In</h2>
                         <p>Enter your account details to continue.</p>
+
                         <?php if (session()->getFlashdata('success')): ?>
-                            <p style="color: green;"><?= session()->getFlashdata('success') ?></p>
+                            <div class="auth-message success">
+                                <?= session()->getFlashdata('success') ?>
+                            </div>
                         <?php endif; ?>
+
                         <?php if (session()->getFlashdata('error')): ?>
-                            <p style="color: red;"><?= session()->getFlashdata('error') ?></p>
+                            <div class="auth-message error">
+                                <?= session()->getFlashdata('error') ?>
+                            </div>
                         <?php endif; ?>
                     </div>
 

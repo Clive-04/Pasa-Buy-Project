@@ -15,6 +15,18 @@
                     </div>
                 </div>
 
+                <?php if (session()->getFlashdata('success')): ?>
+                    <div class="alert alert-success">
+                        <?= esc(session()->getFlashdata('success')) ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (session()->getFlashdata('error')): ?>
+                    <div class="alert alert-error">
+                        <?= esc(session()->getFlashdata('error')) ?>
+                    </div>
+                <?php endif; ?>
+
                 <div class="profile-layout">
                     <div class="profile-card">
                         <div class="profile-header">
@@ -29,7 +41,7 @@
                             <h2><?= esc(trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''))) ?></h2>
                             <p>@<?= esc($user['username'] ?? 'username') ?></p>
 
-                            <button class="status-btn">Active Status</button>
+                            <button class="status-btn" type="button">Active Status</button>
                         </div>
 
                         <div class="profile-stats">
@@ -66,17 +78,19 @@
                             Profile Settings
                         </button>
 
-                        <button type="button" class="settings-link" onclick="openSettingsModal('rateWebsiteModal')">
-                            Rate Website
-                        </button>
+                        <?php if (!isset($isOwnProfile) || !$isOwnProfile): ?>
+                            <button type="button" class="settings-link" onclick="openSettingsModal('rateWebsiteModal')">
+                                Rate Website
+                            </button>
+                        <?php endif; ?>
 
                         <button type="button" class="settings-link" onclick="openSettingsModal('referFriendModal')">
                             Refer a Friend
                         </button>
                     </aside>
-
-                    <?= $this->include('includes/profile_settings_modals') ?>
                 </div>
+
+                <?= $this->include('includes/profile_settings_modals') ?>
             </div>
         </section>
     </div>

@@ -24,26 +24,26 @@
             <div class="dashboard-stats">
                 <div class="stat-box">
                     <span class="stat-label">Active Requests</span>
-                    <h2>04</h2>
+                    <h2><?= esc($activeRequests ?? 0) ?></h2>
                     <p>Requests currently in progress</p>
                 </div>
 
                 <div class="stat-box">
                     <span class="stat-label">Accepted Tasks</span>
-                    <h2>02</h2>
+                    <h2><?= esc($acceptedTasks ?? 0) ?></h2>
                     <p>Errands you are currently handling</p>
                 </div>
 
                 <div class="stat-box">
                     <span class="stat-label">Completed Orders</span>
-                    <h2>18</h2>
+                    <h2><?= esc($completedOrders ?? 0) ?></h2>
                     <p>Successfully delivered requests</p>
                 </div>
 
                 <div class="stat-box">
                     <span class="stat-label">Wallet Balance</span>
-                    <h2>₱520</h2>
-                    <p>Available earnings and balance</p>
+                    <h2>₱<?= number_format((float) ($walletBalance ?? 0), 2) ?></h2>
+                    <p>Available wallet funds</p>
                 </div>
             </div>
 
@@ -55,95 +55,84 @@
                     </div>
 
                     <div class="request-list">
-                        <div class="request-item">
-                            <div>
-                                <h4>Paracetamol 500mg</h4>
-                                <p>Mercury Drug • Urgent</p>
+                        <?php if (!empty($myActiveRequests)): ?>
+                            <?php foreach ($myActiveRequests as $request): ?>
+                                <div class="request-item">
+                                    <div>
+                                        <h4><?= esc($request['item_name']) ?></h4>
+                                        <p><?= esc($request['store_name']) ?> • <?= ucfirst(str_replace('_', ' ', $request['status'])) ?></p>
+                                    </div>
+                                    <a href="<?= base_url('request-details/' . $request['id']) ?>" class="status-badge <?= esc($request['status']) ?>">
+                                        <?= ucfirst(str_replace('_', ' ', $request['status'])) ?>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="request-item">
+                                <div>
+                                    <h4>No active requests yet</h4>
+                                    <p>Your active requests will appear here.</p>
+                                </div>
                             </div>
-                            <a href="<?= base_url('request-details/1') ?>" class="status-badge pending">Pending</a>
-                        </div>
-
-                        <div class="request-item">
-                            <div>
-                                <h4>1 Ream Bond Paper</h4>
-                                <p>National Bookstore • Accepted</p>
-                            </div>
-                            <a href="<?= base_url('request-details/2') ?>" class="status-badge accepted">Accepted</a>
-                        </div>
-
-                        <div class="request-item">
-                            <div>
-                                <h4>Bottled Water Pack</h4>
-                                <p>Local Grocery • On the Way</p>
-                            </div>
-                            <a href="<?= base_url('request-details/3') ?>" class="status-badge delivery">On the Way</a>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
                 <div class="dashboard-card">
                     <div class="card-header">
-                        <h3>Nearby Requests</h3>
+                        <h3>Available Requests</h3>
                         <a href="<?= base_url('browse-requests') ?>">Browse</a>
                     </div>
 
                     <div class="request-list">
-                        <div class="request-item">
-                            <div>
-                                <h4>Notebook and Ballpen</h4>
-                                <p>0.8 km away • Fee: ₱25</p>
+                        <?php if (!empty($availableRequests)): ?>
+                            <?php foreach ($availableRequests as $request): ?>
+                                <div class="request-item">
+                                    <div>
+                                        <h4><?= esc($request['item_name']) ?></h4>
+                                        <p>Fee: ₱<?= number_format((float) ($request['service_fee'] ?? 0), 2) ?></p>
+                                    </div>
+                                    <a href="<?= base_url('request-details/' . $request['id']) ?>" class="mini-btn">View</a>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="request-item">
+                                <div>
+                                    <h4>No available requests</h4>
+                                    <p>New nearby requests will appear here.</p>
+                                </div>
                             </div>
-                            <a href="<?= base_url('request-details/1') ?>" class="mini-btn">Accept</a>
-                        </div>
-
-                        <div class="request-item">
-                            <div>
-                                <h4>Baby Milk Formula</h4>
-                                <p>1.1 km away • Fee: ₱40</p>
-                            </div>
-                            <a href="<?= base_url('request-details/2') ?>" class="mini-btn">Accept</a>
-                        </div>
-
-                        <div class="request-item">
-                            <div>
-                                <h4>Snack Pack</h4>
-                                <p>0.5 km away • Fee: ₱20</p>
-                            </div>
-                            <a href="<?= base_url('request-details/3') ?>" class="mini-btn">Accept</a>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
                 <div class="dashboard-card wide-card">
                     <div class="card-header">
-                        <h3>Recent Activity</h3>
-                        <a href="<?= base_url('my-requests') ?>">See More</a>
+                        <h3>Recent Notifications</h3>
+                        <a href="<?= base_url('notifications') ?>">See More</a>
                     </div>
 
                     <div class="activity-timeline">
-                        <div class="activity-item">
-                            <div class="activity-dot"></div>
-                            <div>
-                                <h4>Your request for Paracetamol was posted</h4>
-                                <p>2 minutes ago</p>
+                        <?php if (!empty($recentActivity)): ?>
+                            <?php foreach ($recentActivity as $activity): ?>
+                                <div class="activity-item">
+                                    <div class="activity-dot"></div>
+                                    <div>
+                                        <h4><?= esc($activity['title']) ?></h4>
+                                        <p><?= esc($activity['content']) ?></p>
+                                        <small><?= date('M j, Y g:i A', strtotime($activity['created_at'])) ?></small>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="activity-item">
+                                <div class="activity-dot"></div>
+                                <div>
+                                    <h4>No notifications yet</h4>
+                                    <p>Your request and payment updates will appear here.</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="activity-item">
-                            <div class="activity-dot"></div>
-                            <div>
-                                <h4>John accepted your Bond Paper request</h4>
-                                <p>12 minutes ago</p>
-                            </div>
-                        </div>
-
-                        <div class="activity-item">
-                            <div class="activity-dot"></div>
-                            <div>
-                                <h4>Your bottled water order is now on the way</h4>
-                                <p>25 minutes ago</p>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -160,17 +149,17 @@
 
                         <a href="<?= base_url('browse-requests') ?>" class="quick-action-card">
                             <span>📍</span>
-                            <p>Find Nearby Runners</p>
+                            <p>Browse Requests</p>
                         </a>
 
-                        <a href="<?= base_url('my-requests') ?>" class="quick-action-card">
-                            <span>📦</span>
-                            <p>Track My Requests</p>
+                        <a href="<?= base_url('wallet') ?>" class="quick-action-card">
+                            <span>💰</span>
+                            <p>Open Wallet</p>
                         </a>
 
-                        <a href="<?= base_url('request-details/1') ?>" class="quick-action-card">
-                            <span>📄</span>
-                            <p>View Request Details</p>
+                        <a href="<?= base_url('notifications') ?>" class="quick-action-card">
+                            <span>🔔</span>
+                            <p>View Notifications</p>
                         </a>
                     </div>
                 </div>

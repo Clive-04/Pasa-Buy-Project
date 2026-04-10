@@ -1,5 +1,4 @@
 <nav class="navbar">
-    <!-- LEFT: LOGO -->
     <div class="nav-left">
         <a href="<?= session()->has('user_id') ? base_url('dashboard') : base_url('login') ?>" class="logo">
             <span class="logo-icon">🛍️</span>
@@ -7,29 +6,32 @@
         </a>
     </div>
 
-    <!-- CENTER: SIMPLE LINKS -->
     <?php $current = uri_string(); ?>
 
     <div class="nav-center">
         <a href="<?= session()->has('user_id') ? base_url('dashboard') : base_url('login') ?>"
-        class="nav-link <?= ($current == '' || $current == 'dashboard' || $current == 'login') ? 'active' : '' ?>">
+            class="nav-link <?= ($current == '' || $current == 'dashboard' || $current == 'login') ? 'active' : '' ?>">
             Home
         </a>
 
         <a href="<?= base_url('about') ?>"
-        class="nav-link <?= ($current == 'about') ? 'active' : '' ?>">
+            class="nav-link <?= ($current == 'about') ? 'active' : '' ?>">
             About
         </a>
 
         <a href="<?= base_url('contact') ?>"
-        class="nav-link <?= ($current == 'contact') ? 'active' : '' ?>">
+            class="nav-link <?= ($current == 'contact') ? 'active' : '' ?>">
             Contact
         </a>
     </div>
 
-    <!-- RIGHT: AUTH -->
     <div class="nav-right">
         <?php if (session()->has('user_id')): ?>
+            <form action="<?= base_url('users/search') ?>" method="get" class="nav-search-form">
+                <input type="text" name="q" class="nav-search-input" placeholder="Search users..." value="<?= esc($_GET['q'] ?? '') ?>">
+                <button type="submit" class="nav-search-btn">Search</button>
+            </form>
+
             <span class="nav-welcome">
                 Welcome, <?= session('user_name') ? explode(' ', session('user_name'))[0] : 'User' ?>!
             </span>

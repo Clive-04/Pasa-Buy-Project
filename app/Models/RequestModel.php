@@ -8,6 +8,7 @@ class RequestModel extends Model
 {
     protected $table = 'requests';
     protected $primaryKey = 'id';
+
     protected $allowedFields = [
         'user_id',
         'item_name',
@@ -25,9 +26,12 @@ class RequestModel extends Model
         'estimated_price',
         'service_fee',
         'payment_method',
+        'payment_status',
+        'paid_at',
         'urgency',
         'status'
     ];
+
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
